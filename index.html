@@ -1,76 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Nhiệm vụ Demoder!</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<title>Nhiệm vụ Demoder</title>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">  
 <style>
 body {
-  background: linear-gradient(to bottom, #ff9966, #ff5e62);
-  font-family: 'Dancing Script', cursive;
+  background-color: #f0f0f0;
+  font-family: 'Patrick Hand', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   overflow: hidden;
 }
 
 h1 {
-  font-size: 5rem;
-  color: #fff;
-  text-shadow: 0 0 10px #ffd700;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-#fireworks-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.sparkle {
+.confetti {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #ffd700;
+  width: 15px;
+  height: 15px;
+  background-color: #f00;
   border-radius: 50%;
-  animation: sparkle 2s linear infinite;
+  animation: confetti 3s linear infinite;
 }
 
-@keyframes sparkle {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-50px); }
+@keyframes confetti {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
 }
 </style>
 </head>
 <body>
-  <h1>Chúc mừng bạn đã hoàn thành nhiệm vụ hôm nay!</h1>
 
-  <div id="fireworks-container"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
   <script>
-    const container = document.getElementById('fireworks-container');
-    const fireworks = new Fireworks(container, {
-      sound: true,
-      opacity: 0.9,
-      explosion: 5,
-      particles: 100,
-      colors: ['#ff0000', '#ffff00', '#00ff00', '#0000ff']
-    });
+    const memes = [
+      { text: "Tuyệt vời ông mặt trời! Nhiệm vụ xong rồi!", gif: "https://media.giphy.com/media/l2JehQ2GitHGdVG9y/giphy.gif" },
+      { text: "Chúc mừng bạn đã sống sót qua ngày hôm nay!", gif: "https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif" },
+      { text: "Nhiệm vụ hoàn thành! Giờ thì đi ăn mừng thôi!", gif: "https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" },
+      { text: "Không có gì tuyệt vời hơn là hoàn thành công việc đúng hạn!", gif: "https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" },
+      { text: "Bạn thật là một siêu nhân! Đã hoàn thành nhiệm vụ khó khăn này!", gif: "https://media.giphy.com/media/SIMpdFzyk1gNhdsDHs/giphy.gif" },
+      { text: "Hôm nay bạn đã làm rất tốt! Hãy tự thưởng cho mình một phần thưởng xứng đáng!", gif: "https://media.giphy.com/media/26BRzozg4TCBXv6QU/giphy.gif" },
+      { text: "Chúc mừng! Bạn đã vượt qua thử thách và đạt được thành công!", gif: "https://media.giphy.com/media/yoJC2GnSClbPOkV0eA/giphy.gif" },
+      { text: "Hãy ăn mừng chiến thắng của bạn! Bạn xứng đáng với điều đó!", gif: "https://media.giphy.com/media/3NtY188QaxDdC/giphy.gif" }
+    ];
 
-    fireworks.start();
-    for (let i = 0; i < 50; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      document.body.appendChild(sparkle);
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      sparkle.style.left = x + 'px';
-      sparkle.style.top = y + 'px';
-    }
+    const randomIndex = Math.floor(Math.random() * memes.length);
+    const selectedMeme = memes[randomIndex];
+
+    document.body.innerHTML = `
+      <h1>${selectedMeme.text}</h1>
+      <img src="${selectedMeme.gif}" alt="Meme" style="width: 300px;">
+    `;
   </script>
 </body>
 </html>
