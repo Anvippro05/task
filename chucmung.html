@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demoder Complete!</title>
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+#fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chúc mừng bạn đã hoàn thành nhiệm vụ hôm nay!</h1>
+  </div>
+
+  <div id="fireworks-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
+  <script>
+    const container = document.getElementById('fireworks-container');
+    const fireworks = new Fireworks(container, {
+      sound: true,
+      opacity: 0.9,
+      explosion: 5,
+    });
+
+    fireworks.start();
+  </script>
+</body>
+</html>
